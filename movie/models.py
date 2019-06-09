@@ -1,5 +1,5 @@
 from django.db import models
-from fynd import settings
+from imdb import settings
 from django.contrib.auth.models import User
 
 
