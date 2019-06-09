@@ -1,1 +1,1 @@
-web: gunicorn Movies.wsgi
+web: gunicorn imdb.wsgi
