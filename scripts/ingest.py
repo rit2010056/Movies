@@ -80,7 +80,12 @@ for d in json:
     conn.commit()
 
     for genre in genres:
-        genre_id = genre_dict.keys()[genre_dict.values().index(genre)]
+
+        for id, name in genre_dict.items():
+            if name == genre:
+                genre_id= id
+
+        # genre_id = genre_dict.keys()[genre_dict.values().index(genre)]
 
         query = "INSERT INTO movie_genre (movie_id, genre_id) values(?, ?)"
         cursor.execute(query, (movie_id, genre_id))
