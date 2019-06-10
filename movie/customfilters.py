@@ -16,6 +16,11 @@ class MovieFilters(django_filters.FilterSet):
     imdb_score  = django_filters.NumberFilter(field_name="imdb_score", lookup_expr='iexact')
     genre = django_filters.CharFilter(field_name='genre__name', lookup_expr='icontains')
 
+    popularity_gt = django_filters.NumberFilter(field_name="popularity", lookup_expr='gt')
+    popularity_lt = django_filters.NumberFilter(field_name="popularity", lookup_expr='lt')
+    imdb_score_gt = django_filters.NumberFilter(field_name="imdb_score", lookup_expr='gt')
+    imdb_score_lt = django_filters.NumberFilter(field_name="imdb_score", lookup_expr='lt')
+
     class Meta:
         model = Movie
         fields = ['name', "popularity", "director", "imdb_score", "genre"]
