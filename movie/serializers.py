@@ -8,7 +8,7 @@ class Genreserielizer(serializers.ModelSerializer):
 
 class MoviesSerializer(serializers.ModelSerializer):
 
-    genre = Genreserielizer(read_only=True, many=True)
+    genre = Genreserielizer(many=True)
     class Meta:
         model = Movie
         fields = [
@@ -18,3 +18,10 @@ class MoviesSerializer(serializers.ModelSerializer):
                     "director",
                     "imdb_score",
                 ]
+
+    #
+    # def create(self, validated_data):
+    #     genre_data = validated_data.pop('genre')
+    #     for genre in genre_data:
+    #         Genre.objects.create(**genre_data)
+    #     return genre_data

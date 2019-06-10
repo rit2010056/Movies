@@ -1,21 +1,17 @@
 from django.db import models
-from imdb import settings
-from django.contrib.auth.models import User
-
 
 class Genre(models.Model):
     class Meta:
         db_table = 'genre'
 
-    name = models.TextField(null=False)
+    name = models.CharField(null=False,max_length=40)
 
 class Movie(models.Model):
     class Meta:
         db_table = 'movie'
 
     popularity = models.FloatField(null=False)
-    director = models.TextField(null=False)
+    director = models.CharField(null=False, max_length=40)
     imdb_score = models.FloatField(null=False)
-    name = models.TextField(null=False)
-
+    name = models.CharField(null=False, max_length=50)
     genre = models.ManyToManyField(Genre)
