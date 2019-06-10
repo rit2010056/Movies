@@ -4,7 +4,7 @@ class Genre(models.Model):
     class Meta:
         db_table = 'genre'
 
-    name = models.CharField(null=False,max_length=40)
+    name = models.CharField(null=False, max_length=40, unique=True)
 
 class Movie(models.Model):
     class Meta:

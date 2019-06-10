@@ -4,24 +4,32 @@ from .models import Movie, Genre
 class Genreserielizer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = '__all__'
+        fields = ['id','name']
 
 class MoviesSerializer(serializers.ModelSerializer):
 
-    genre = Genreserielizer(many=True)
+    genres = Genreserielizer(many=True, source='genre')
     class Meta:
         model = Movie
         fields = [
                     "popularity",
                     "name",
-                    "genre",
+                    "genres",
                     "director",
                     "imdb_score",
                 ]
 
-    #
-    # def create(self, validated_data):
-    #     genre_data = validated_data.pop('genre')
-    #     for genre in genre_data:
-    #         Genre.objects.create(**genre_data)
-    #     return genre_data
+class MoviesCreateSerializer(serializers.ModelSerializer):
+
+    genres = serializers.PrimaryKeyRelatedField(many=True, queryset=Genre.objects.all(), read_only=False, source='genre')
+
+    class Meta:
+        model = Movie
+        fields = [
+                    "popularity",
+                    "name",
+                    "genres",
+                    "director",
+                    # "alternate_name",
+                    "imdb_score",
+                ]

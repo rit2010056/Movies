@@ -1,16 +1,16 @@
-from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path, include
+from movie.views import ListCreateDeleteGenreView
+from rest_framework.routers import DefaultRouter
 
-app_name = 'fynd'
+app_name = 'Movie'
 
-urlpatterns = [
-    # Examples:
-    # url(r'^$', 'fynd.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+router = DefaultRouter()
+router.register(r'genre', ListCreateDeleteGenreView, basename='genre')
+urlpatterns = router.urls
+
+urlpatterns += [
     path('user/', include('user.urls') ),
     path('admin/', admin.site.urls),
-    # url(r'admin', include('admin.site.urls', namespace='admin')),
-    # path(r'^admin/', include(admin.site.)),
-    re_path('movie/', include('movie.urls'))
+    path('movie/', include('movie.urls')),
 ]
