@@ -3,8 +3,9 @@ import sqlite3
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print("BASE DIR", BASE_DIR)
 sql_path = os.path.join(BASE_DIR, 'db.sqlite3')
+
+print("sql_path", sql_path)
 
 def create_connection(db_file):
     try:
