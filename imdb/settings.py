@@ -108,8 +108,11 @@ WSGI_APPLICATION = 'imdb.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+print("Database",DATABASES)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -160,4 +163,4 @@ STATIC_URL = '/static/'
 # This should already be in your settings.py
 django_heroku.settings(locals())
 # This is new
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
