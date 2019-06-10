@@ -163,4 +163,4 @@ STATIC_URL = '/static/'
 # This should already be in your settings.py
 django_heroku.settings(locals())
 # This is new
-# del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
