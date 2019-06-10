@@ -8,7 +8,6 @@ ez-setup==0.9
 graphviz==0.11
 gunicorn==19.9.0
 isort==4.3.20
-lazy-object-proxy==0.0.0
 mccabe==0.6.1
 psycopg2==2.8.2
 pylint==2.3.1
