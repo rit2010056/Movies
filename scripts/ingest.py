@@ -3,6 +3,7 @@ import sqlite3
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print("BASE DIR", BASE_DIR)
 sql_path = os.path.join(BASE_DIR, 'db.sqlite3')
 
 def create_connection(db_file):
@@ -57,6 +58,7 @@ with open(file_path) as f:
     genre = []
     json = json.load(f)
     f.close()
+
 
 genre_dict = get_all_genre()
 print(genre_dict)
